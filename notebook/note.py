@@ -1,19 +1,16 @@
-"""class notebook"""
+"""class note"""
+import datetime
 
-class Notebook:
-    note: list = []
-    def __init__(self):
-        pass
+last_id=0
+
+class Note:
+    def __init__(self, memo: str, tags: str=""):
+        self.memo = memo
+        self.tags = tags
+        self.creation_data = datetime.date.today()
+        global last_id
+        last_id += 1
+        self.id = last_id
     
-    def search(filter: str):
-        pass
-
-    def new_note(note_id, tag=""):
-        pass
-
-    def modify_memo(note_id, memo):
-        pass
-
-    def modify_tag(note_id, tag):
-        pass
-
+    def match(self, search_filter:str) -> bool:
+        return search_filter in self.memo or search_filter in self.tags
