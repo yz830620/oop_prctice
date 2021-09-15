@@ -1,5 +1,6 @@
 """file define class which define propety"""
 
+
 def get_valid_input(input_string, valid_options):
     response = input(f"{input_string}({', '.join(valid_options)})  ")
     while response.lower() not in valid_options:
@@ -7,9 +8,11 @@ def get_valid_input(input_string, valid_options):
         response = input(input_string)
     return response
 
+
 class Propety:
     """class which define propety"""
-    def __init__(self, square_feet, num_bedroom, num_bathroom, **keyword):
+    def __init__(self, square_feet='', num_bedroom='', num_bathroom='', **kwargs):
+        super().__init__(**kwargs)
         self.square_feet = square_feet
         self.num_bedroom = num_bedroom
         self.num_bathroom = num_bathroom
@@ -38,6 +41,13 @@ class House(Propety):
         self.num_stories = num_stories
         self.garage = garage
         self.fenced_yard = fenced_yard
+
+    def display(self):
+        super().display()
+        print("House Details")
+        print(f"number of stories: {self.num_stories}")
+        print(f"garage: {self.garage}")
+        print(f"fence yard: {self.fenced_yard}")
     
     @staticmethod
     def prompt_init():
@@ -52,8 +62,6 @@ class House(Propety):
         return parent_init
 
 
-
-
 class Apartment(Propety):
     """class to describe apartment"""
     valid_laundries = ("coin", "ensuite", "none")
@@ -62,7 +70,13 @@ class Apartment(Propety):
         super().__init__(**kwargs)
         self.balcony = balcony
         self.laundry = laundry
-    
+
+    def display(self):
+        super().display()
+        print("Apartment Details")
+        print(f"balcony: {self.balcony}")
+        print(f"has laundry: {self.laundry}")
+
     @staticmethod
     def prompt_init():
         parent_init = Propety.prompt_init()
