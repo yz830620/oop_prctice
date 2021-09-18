@@ -9,6 +9,7 @@ from user import User
 class Session:
     """main object of the system
     Attr:
+        session_time: dt
         host: User
         attendee: List[User]
         record: dict[User, (dt, wav)]
@@ -18,12 +19,19 @@ class Session:
         contact_time()
         generate_chat_room(host, attendee)
     """
-    def __init__():
-        
-        pass
+    session_in_the_month = []
+    def __init__(self, session_time):
+        self.session_time: dt = session_time
+        self.host: User = None
+        self.attendee: List[User]= []
+        #TODO implement wav ...
+        self.record: List[Wav] = []
+        self.topic: str = None
+        self.question: List[str] = []
+        Session.session_in_the_month.append(self)
 
 
-class calendar:
+class Calendar:
     """list of Session
     Attr:
         events: List[Session]
@@ -35,3 +43,7 @@ class calendar:
             2. setup sessions for every day
         """
         pass
+
+class Wav:
+    "audio file format"
+    pass
