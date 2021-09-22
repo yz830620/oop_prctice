@@ -73,5 +73,4 @@ Please enter a commend:
         finally:
             print("Thank tou for testing the auth module")
 
-editor = Editor()
-editor.menu()
+Editor().menu()
