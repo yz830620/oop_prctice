@@ -17,8 +17,10 @@ class User:
         self.points = 100
         self.enroll_list = []
         self.host_list = []
-        self.create_date = dt.time
+        self.create_date = dt.date
         User.all_user.append(self)
+
+        self.is_logged_in = False
 
     def _encrypt_pw(self, password):
         "return encrypted password"
