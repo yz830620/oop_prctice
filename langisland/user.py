@@ -1,5 +1,6 @@
 """define user and host forming it"""
 #python built-in
+import hashlib
 import datetime as dt
 from typing import List
 from calendar import Session
@@ -7,15 +8,23 @@ from calendar import Session
 class User:
     """class to define user"""
     all_user = []
-    def __init__(self, name: str, email: str, skype: str, line: str):
+    def __init__(self, name: str, password: str, email: str, skype: str, line: str):
         self.name = name
+        self.password = self._encrypt_pw(password)
         self.email = email
         self.skype = skype
         self.line = line
         self.points = 100
         self.enroll_list = []
         self.host_list = []
+        self.create_date = dt.time
         User.all_user.append(self)
+
+    def _encrypt_pw(self, password):
+        "return encrypted password"
+        hash_string = self.username + password
+        hash_string = hash_string.encode("utf-8")
+        return hashlib.sha256(hash_string).hexdigest()
     
     def enroll(self, session: Session):
         self.enroll_list.append(session)
