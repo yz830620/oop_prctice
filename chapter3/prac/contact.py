@@ -8,9 +8,12 @@ class Contact:
         Contact.all_contacts += (self,)
 
     def __repr__(self):
-        return f"{self.__class__}, name: {self.name}"
+        return (f"{self.__class__.__name__}("
+                f"name: {self.name!r}, {self.email!r}"
+                ")"
+            )
 
 if __name__ == "__main__":
-    even = Contact("even","apple@com")
-    strong = Contact("strong","apple@com")
+    even = Contact("even","even@apple.com")
+    strong = Contact("strong","strong@apple.com")
     print(even.all_contacts)
