@@ -13,6 +13,14 @@ class Contact:
                 ")"
             )
 
+
+class Supplier(Contact):
+    def order(self, order: "Order") -> None:
+        print(
+            "If this were a real system we would send"
+            f"'{order}' order to '{self.name}'"
+        )
+
 if __name__ == "__main__":
     even = Contact("even","even@apple.com")
     strong = Contact("strong","strong@apple.com")
