@@ -4,9 +4,11 @@ class Cursor:
         self.position = 0
 
     def forward(self):
+        #TODO add try except
         self.position += 1
     
     def back(self):
+        #TODO add try except
         self.position -= 1
     
     def home(self):
