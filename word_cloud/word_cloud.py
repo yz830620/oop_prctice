@@ -40,8 +40,9 @@ class WordCloudEngine:
 if __name__ == "__main__":
     # if you miss any package. please try pip install -r requirements.txt 
     # make sure file is in your project directory and you also switch to it
-    data_paths = ["review_chicago.txt", "reviews_hawaii.txt"]
-    removeable_words = ['<br/>', 'Chicago', 'place', 'stay']
+    #data_paths = ["review_chicago.txt", "reviews_hawaii.txt"]
+    data_paths = ["reviews_hawaii.txt"]
+    removeable_words = ['<br/>', 'Chicago', 'place', 'stay', 'ã', 'å', 'ä', 'á', '€', 'ž', 'œ', 'play', 'stay', 'ì', 'ë']
     for data_path in data_paths:
         word_cloud_engine = WordCloudEngine(data_path, removeable_words)
         data = word_cloud_engine.open_file()
