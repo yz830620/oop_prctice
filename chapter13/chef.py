@@ -27,14 +27,15 @@ class Chef(Thread):
     def prepare(self) -> None:
         """Simulate doing a lot of work with a BIG computation"""
         start = time.monotonic()
-        target = start + 1 + random.random()
+        target = start + 0.1 + (random.random() ** 2) * 10
+        duration = round(target - start, 2)
         for i in range(1000000000):
             self.total += math.factorial(i)
-            if i%1000 == 0:
-                print(self.name, 'busy on ', start, target , i)
+            # if i%1000 == 0:
+            #     print(self.name, 'busy on ', start, target , i)
             if time.monotonic() >= target:
                 break
-        print(f"{time.monotonic(): .3f} {self.name} made {self.order}")
+        print(f"{time.monotonic(): .3f} {self.name} made {self.order}, takes time {duration} second")
 
     def run(self) -> None:
         while True:
