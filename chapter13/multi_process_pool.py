@@ -21,7 +21,7 @@ if __name__ == "__main__":
         random.randint(100000000, 10000000000)
         for i in range(40960)
     ]
-    with Pool() as pool:
+    with Pool() as pool: 
         results = pool.map(prime_factors, to_factor)
     primes = [
         value

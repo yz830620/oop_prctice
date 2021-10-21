@@ -1,6 +1,7 @@
 from __future__ import annotations
+import os
 from pathlib import Path
-from queue import Queue
+from multiprocessing import Queue
 from typing import List, Iterator, Optional, Union, TYPE_CHECKING
 
 if TYPE_CHECKING:
