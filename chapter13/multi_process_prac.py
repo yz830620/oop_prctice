@@ -4,7 +4,7 @@ import time
 import os
 
 
-class MuchCPU(Thread):
+class MuchCPU(Process):
     def run(self) -> None:
         print(f"OS PID {os.getpid()}")
 
