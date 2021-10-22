@@ -27,7 +27,7 @@ class ImportVisitor(ast.NodeVisitor):
             self.imports.add(node.module)
 
 def find_imports(path: Path) -> ImportResult:
-    tree = ast.parse(path.read_text())
+    tree = ast.parse(path.read_text(encoding="utf-8", errors='ignore'))
     iv = ImportVisitor()
     iv.visit(tree)
     return ImportResult(path, iv.imports)    
