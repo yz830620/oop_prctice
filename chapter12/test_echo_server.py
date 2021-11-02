@@ -3,23 +3,15 @@ import socket
 import time
 import pytest
 
-@pytest.fixture()
-def echoserver(request):
-    def setup():
-        p = subprocess.Popen(
-            ['python3', 'echo_server.py']
+@pytest.fixture(scope="session")
+def echoserver():
+    # only python in windows
+    p = subprocess.Popen(
+            ['python', 'echo_server.py']
         )
-        time.sleep(1)
-        return p
-
-    def cleanup(p):
-        p.terminame()
-
-    return request.cached_setup(
-        setup=setup,
-        teardown=cleanup,
-        scope="session"
-    )
+    time.sleep(1)
+    yield p
+    p.terminate()
 
 @pytest.fixture()
 def clientsocket(request):
